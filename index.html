@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Endurance Club | Тренировки на выносливость</title>
+  <title>My Endurance Site</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,6 @@
       font-family: 'Open Sans', sans-serif;
       color: var(--text);
       line-height: 1.6;
-      overflow-x: hidden;
       background-color: #f9f9f9;
     }
     
@@ -50,60 +49,16 @@
       padding: 0 20px;
     }
     
-    /* Шапка */
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 20px 0;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: white;
-    }
-    
-    .logo span {
-      color: var(--accent);
-    }
-    
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    nav ul li {
-      margin-left: 30px;
-    }
-    
-    nav ul li a {
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    
-    nav ul li a:hover {
-      color: var(--accent);
-    }
-    
     /* Герой-секция */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), 
+                  url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') 
+                  center/cover no-repeat;
       display: flex;
       align-items: center;
       text-align: center;
       color: white;
-      padding-top: 80px;
     }
     
     .hero-content {
@@ -213,152 +168,39 @@
       background-color: var(--light);
     }
     
-    .schedule-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-    
-    .day-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 30px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      border-top: 4px solid var(--accent);
     }
     
-    .day-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
     }
     
-    .day-card h3 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: var(--primary);
-    }
-    
-    .day-card p {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .day-card i {
-      margin-right: 10px;
-      color: var(--accent);
-      width: 20px;
-      text-align: center;
-    }
-    
-    .day-card .btn {
-      display: inline-block;
+    th {
       background-color: var(--primary);
       color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin-top: 20px;
       font-weight: 600;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
-    .day-card .btn:hover {
-      background-color: var(--accent);
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
     }
     
-    /* Тренеры */
-    .trainers {
-      padding: 100px 0;
-      background-color: white;
-    }
-    
-    .trainers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
-    }
-    
-    .trainer-card {
-      background-color: var(--light);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      text-align: center;
-    }
-    
-    .trainer-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .trainer-image {
-      height: 250px;
-      overflow: hidden;
-    }
-    
-    .trainer-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    
-    .trainer-card:hover .trainer-image img {
-      transform: scale(1.1);
-    }
-    
-    .trainer-info {
-      padding: 20px;
-    }
-    
-    .trainer-info h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    
-    .trainer-info p {
-      color: #666;
-      margin-bottom: 15px;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    
-    .social-links a {
-      color: var(--primary);
-      transition: color 0.3s;
-    }
-    
-    .social-links a:hover {
-      color: var(--accent);
+    tr:hover {
+      background-color: #f1f1f1;
     }
     
     /* Контакты */
     .contact {
       padding: 100px 0;
-      background-color: var(--light);
-    }
-    
-    .contact-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 50px;
-    }
-    
-    .contact-info h3 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      background-color: white;
     }
     
     .contact-info p {
@@ -373,107 +215,17 @@
       width: 20px;
     }
     
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-family: 'Open Sans', sans-serif;
-    }
-    
-    .contact-form textarea {
-      height: 150px;
-      resize: vertical;
-    }
-    
-    .contact-form button {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    
-    .contact-form button:hover {
-      background-color: var(--accent);
-    }
-    
     /* Футер */
     footer {
       background-color: var(--dark);
       color: white;
-      padding: 50px 0 20px;
+      padding: 30px 0;
       text-align: center;
     }
     
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-    
-    .footer-section {
-      flex: 1;
-      min-width: 250px;
-      margin-bottom: 30px;
-    }
-    
-    .footer-section h3 {
-      color: white;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-    
-    .footer-section p {
-      margin-bottom: 15px;
-      color: #bbb;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-    
-    .footer-links a {
-      color: #bbb;
-      transition: color 0.3s;
-    }
-    
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-    
-    .social-links-footer {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    .social-links-footer a {
-      color: white;
-      font-size: 20px;
-      transition: color 0.3s;
-    }
-    
-    .social-links-footer a:hover {
-      color: var(--accent);
-    }
-    
     .copyright {
-      border-top: 1px solid #444;
-      padding-top: 20px;
-      color: #bbb;
       font-size: 14px;
+      color: #bbb;
     }
     
     /* Анимации */
@@ -512,12 +264,13 @@
         font-size: 18px;
       }
       
-      nav ul {
-        display: none;
-      }
-      
       .section-title {
         font-size: 36px;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
       }
     }
     
@@ -529,36 +282,17 @@
       .cta-button {
         padding: 12px 30px;
       }
-      
-      .schedule-cards {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Шапка -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">ENDURANCE<span>CLUB</span></div>
-      <nav>
-        <ul>
-          <li><a href="#about">О клубе</a></li>
-          <li><a href="#schedule">Расписание</a></li>
-          <li><a href="#trainers">Тренеры</a></li>
-          <li><a href="#contact">Контакты</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
   <!-- Герой-секция -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>ПРЕОДОЛЕЙ СВОИ ГРАНИЦЫ</h1>
-        <p>Присоединяйтесь к нашему беговому клубу и откройте новые возможности своего тела</p>
-        <a href="#schedule" class="cta-button">Начать тренироваться</a>
+        <h1>MY ENDURANCE SITE</h1>
+        <p>Тренировки на выносливость для всех уровней подготовки</p>
+        <a href="#schedule" class="cta-button">Присоединиться</a>
       </div>
     </div>
   </section>
@@ -566,16 +300,16 @@
   <!-- О клубе -->
   <section id="about" class="about">
     <div class="container">
-      <h2 class="section-title">О нашем клубе</h2>
+      <h2 class="section-title">О нас</h2>
       <div class="about-content">
         <div class="about-text">
-          <h3>Мы создаем сообщество бегунов</h3>
-          <p>Endurance Club - это не просто тренировки, это образ жизни. Мы объединяем людей, которые стремятся к самосовершенствованию через бег и развитие выносливости.</p>
-          <p>Наш клуб существует с 2015 года и за это время мы помогли сотням людей достичь своих спортивных целей - от первого километра до марафонских дистанций.</p>
-          <p>Мы предлагаем профессиональные тренировки для всех уровней подготовки в дружеской и поддерживающей атмосфере.</p>
+          <h3>Наша философия</h3>
+          <p>Мы верим, что выносливость - это не только физическая, но и ментальная характеристика. Наши тренировки помогают развить оба этих качества.</p>
+          <p>Наш клуб объединяет людей, которые стремятся преодолевать свои пределы и достигать новых высот в спорте и жизни.</p>
+          <p>Мы предлагаем индивидуальный подход к каждому участнику, независимо от его текущего уровня подготовки.</p>
         </div>
         <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Тренировка в парке">
+          <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Групповая тренировка">
         </div>
       </div>
     </div>
@@ -584,107 +318,43 @@
   <!-- Расписание -->
   <section id="schedule" class="schedule">
     <div class="container">
-      <h2 class="section-title">Расписание тренировок</h2>
-      <div class="schedule-cards">
-        <!-- Понедельник -->
-        <div class="day-card">
-          <h3>Понедельник</h3>
-          <p><i class="fas fa-clock"></i> 19:00 - 20:30</p>
-          <p><i class="fas fa-map-marker-alt"></i> Парк Победы</p>
-          <p><i class="fas fa-running"></i> Интервальный бег</p>
-          <p><i class="fas fa-user-tie"></i> Тренер: Алексей</p>
-          <button class="btn">Записаться</button>
-        </div>
-        
-        <!-- Среда -->
-        <div class="day-card">
-          <h3>Среда</h3>
-          <p><i class="fas fa-clock"></i> 19:00 - 20:30</p>
-          <p><i class="fas fa-map-marker-alt"></i> Набережная</p>
-          <p><i class="fas fa-running"></i> Темповый бег</p>
-          <p><i class="fas fa-user-tie"></i> Тренер: Мария</p>
-          <button class="btn">Записаться</button>
-        </div>
-        
-        <!-- Пятница -->
-        <div class="day-card">
-          <h3>Пятница</h3>
-          <p><i class="fas fa-clock"></i> 18:30 - 20:00</p>
-          <p><i class="fas fa-map-marker-alt"></i> Стадион "Юность"</p>
-          <p><i class="fas fa-running"></i> Силовая подготовка</p>
-          <p><i class="fas fa-user-tie"></i> Тренер: Дмитрий</p>
-          <button class="btn">Записаться</button>
-        </div>
-        
-        <!-- Суббота -->
-        <div class="day-card">
-          <h3>Суббота</h3>
-          <p><i class="fas fa-clock"></i> 09:00 - 11:00</p>
-          <p><i class="fas fa-map-marker-alt"></i> Лесопарк</p>
-          <p><i class="fas fa-running"></i> Длительный кросс</p>
-          <p><i class="fas fa-user-tie"></i> Тренер: Алексей</p>
-          <button class="btn">Записаться</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Тренеры -->
-  <section id="trainers" class="trainers">
-    <div class="container">
-      <h2 class="section-title">Наши тренеры</h2>
-      <div class="trainers-grid">
-        <!-- Тренер 1 -->
-        <div class="trainer-card">
-          <div class="trainer-image">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Алексей Петров">
-          </div>
-          <div class="trainer-info">
-            <h3>Алексей Петров</h3>
-            <p>Мастер спорта по легкой атлетике</p>
-            <p>10 лет тренерского опыта</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-telegram"></i></a>
-              <a href="#"><i class="fab fa-vk"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Тренер 2 -->
-        <div class="trainer-card">
-          <div class="trainer-image">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Мария Соколова">
-          </div>
-          <div class="trainer-info">
-            <h3>Мария Соколова</h3>
-            <p>Кандидат в мастера спорта</p>
-            <p>Специалист по бегу на средние дистанции</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-telegram"></i></a>
-              <a href="#"><i class="fab fa-vk"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Тренер 3 -->
-        <div class="trainer-card">
-          <div class="trainer-image">
-            <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=712&q=80" alt="Дмитрий Иванов">
-          </div>
-          <div class="trainer-info">
-            <h3>Дмитрий Иванов</h3>
-            <p>Специалист по функциональной подготовке</p>
-            <p>Эксперт в области спортивной медицины</p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-telegram"></i></a>
-              <a href="#"><i class="fab fa-vk"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 class="section-title">Расписание</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>День</th>
+            <th>Время</th>
+            <th>Тип тренировки</th>
+            <th>Место</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Понедельник</td>
+            <td>19:00 - 20:30</td>
+            <td>Интервальный бег</td>
+            <td>Парк Победы</td>
+          </tr>
+          <tr>
+            <td>Среда</td>
+            <td>19:00 - 20:30</td>
+            <td>Темповый бег</td>
+            <td>Набережная</td>
+          </tr>
+          <tr>
+            <td>Пятница</td>
+            <td>18:30 - 20:00</td>
+            <td>Силовая подготовка</td>
+            <td>Стадион "Юность"</td>
+          </tr>
+          <tr>
+            <td>Суббота</td>
+            <td>09:00 - 11:00</td>
+            <td>Длительный кросс</td>
+            <td>Лесопарк</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -692,25 +362,11 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2 class="section-title">Контакты</h2>
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3>Как нас найти</h3>
-          <p><i class="fas fa-map-marker-alt"></i> г. Москва, Парк Победы</p>
-          <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
-          <p><i class="fas fa-envelope"></i> info@enduranceclub.ru</p>
-          <p><i class="fas fa-clock"></i> Пн-Пт: 9:00 - 21:00</p>
-          <p><i class="fas fa-clock"></i> Сб-Вс: 10:00 - 18:00</p>
-        </div>
-        <div class="contact-form">
-          <h3>Остались вопросы?</h3>
-          <form>
-            <input type="text" placeholder="Ваше имя" required>
-            <input type="email" placeholder="Ваш email" required>
-            <input type="tel" placeholder="Ваш телефон">
-            <textarea placeholder="Ваше сообщение" required></textarea>
-            <button type="submit">Отправить</button>
-          </form>
-        </div>
+      <div class="contact-info">
+        <p><i class="fas fa-map-marker-alt"></i> г. Москва, Парк Победы</p>
+        <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+        <p><i class="fas fa-envelope"></i> info@endurance-site.ru</p>
+        <p><i class="fas fa-clock"></i> Пн-Пт: 9:00 - 21:00</p>
       </div>
     </div>
   </section>
@@ -718,36 +374,7 @@
   <!-- Футер -->
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Endurance Club</h3>
-          <p>Беговой клуб для тех, кто стремится к большему. Присоединяйтесь к нашему сообществу!</p>
-          <div class="social-links-footer">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-vk"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3>Быстрые ссылки</h3>
-          <ul class="footer-links">
-            <li><a href="#about">О клубе</a></li>
-            <li><a href="#schedule">Расписание</a></li>
-            <li><a href="#trainers">Тренеры</a></li>
-            <li><a href="#contact">Контакты</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Контакты</h3>
-          <p><i class="fas fa-map-marker-alt"></i> г. Москва, Парк Победы</p>
-          <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
-          <p><i class="fas fa-envelope"></i> info@enduranceclub.ru</p>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>&copy; 2023 Endurance Club. Все права защищены.</p>
-      </div>
+      <p class="copyright">&copy; 2023 My Endurance Site. Все права защищены.</p>
     </div>
   </footer>
 
@@ -764,45 +391,20 @@
       });
     });
     
-    // Анимация при скролле
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.day-card, .trainer-card');
-      
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if (elementPosition < screenPosition) {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }
-      });
-    };
-    
-    // Инициализация анимации
+    // Анимация таблицы при загрузке
     window.addEventListener('load', () => {
-      const animatedElements = document.querySelectorAll('.day-card, .trainer-card');
-      animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'all 0.6s ease';
+      const rows = document.querySelectorAll('table tr');
+      rows.forEach((row, index) => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-20px)';
+        row.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        
+        setTimeout(() => {
+          row.style.opacity = '1';
+          row.style.transform = 'translateX(0)';
+        }, 100);
       });
-      
-      setTimeout(() => {
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll(); // Проверить видимые элементы при загрузке
-      }, 500);
     });
-    
-    // Обработка формы
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
-        this.reset();
-      });
-    }
   </script>
 </body>
 </html>
