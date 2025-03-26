@@ -3,66 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnduranceResearch | Научные методы оценки выносливости</title>
+    <title>EnduranceLab | Тесты выносливости</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2c3e50;
-            --secondary: #16a085;
-            --accent: #e74c3c;
+            --secondary: #e74c3c;
             --light: #ecf0f1;
             --dark: #1a252f;
-            --text: #34495e;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            line-height: 1.8;
-            color: var(--text);
+            line-height: 1.6;
+            color: #333;
             background-color: #f9f9f9;
-            font-size: 1.1rem;
         }
         
-        /* Научный хедер */
+        /* Навигация */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
+            background: var(--primary);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .research-header {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
         
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo i {
-            color: var(--secondary);
-            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .nav-links a {
@@ -70,81 +62,51 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            position: relative;
         }
         
         .nav-links a:hover {
             color: var(--secondary);
         }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Герой секция с актуальностью */
+        /* Герой секция */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('images/lab-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('images/hffar.jpg') center/cover no-repeat;
             color: white;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
         
         .btn {
             display: inline-block;
             background: var(--secondary);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             margin: 0.5rem;
-            border: 2px solid transparent;
         }
         
         .btn:hover {
-            background: transparent;
-            border-color: var(--secondary);
             transform: translateY(-3px);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-        
-        .btn-outline:hover {
-            background: var(--secondary);
-            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         /* Основной контент */
@@ -155,12 +117,12 @@
         }
         
         section {
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
         }
         
         h2 {
-            font-size: 2.3rem;
-            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--primary);
             text-align: center;
             position: relative;
@@ -178,170 +140,56 @@
             background: var(--secondary);
         }
         
-        h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+        /* Тесты */
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
         
-        /* Научные карточки */
-        .card {
+        .test-card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-left: 4px solid var(--secondary);
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        .test-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-title i {
-            color: var(--secondary);
-            font-size: 1.5rem;
-        }
-        
-        /* Калькуляторы */
-        .calculator {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-bottom: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        input, select {
+        .test-card .test-img {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            height: 250px;
+            object-fit: cover;
         }
         
-        input:focus, select:focus {
-            border-color: var(--secondary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.2);
-        }
-        
-        button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        button:hover {
-            background: #138d75;
-        }
-        
-        .result {
-            margin-top: 1.5rem;
+        .test-content {
             padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary);
-            display: none;
         }
         
-        /* Таблицы */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 1rem;
-        }
-        
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 500;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        
-        tr:hover {
-            background-color: #e6f7f4;
-        }
-        
-        /* Программы тренировок */
-        .program {
-            margin-bottom: 3rem;
-        }
-        
-        .program h3 {
-            color: var(--secondary);
+        .test-content h3 {
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .program h3 i {
-            font-size: 1.3rem;
-        }
-        
-        .program ul {
-            list-style-type: none;
-            margin: 1.5rem 0;
-        }
-        
-        .program li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.8rem;
-        }
-        
-        .program li::before {
-            content: '•';
-            color: var(--secondary);
+            color: var(--primary);
             font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -3px;
+        }
+        
+        .test-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .test-meta {
+            color: #666;
+            font-size: 0.9rem;
         }
         
         /* Футер */
         footer {
             background: var(--dark);
             color: white;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
         }
         
@@ -354,34 +202,9 @@
             text-align: left;
         }
         
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-column a {
-            color: #bbb;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-column a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-        
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             margin-top: 2rem;
         }
@@ -394,351 +217,174 @@
         
         .social-links a:hover {
             color: var(--secondary);
-            transform: translateY(-3px);
         }
         
         .copyright {
             margin-top: 3rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: #bbb;
         }
         
         /* Адаптивность */
         @media (max-width: 768px) {
-            .research-header {
+            nav {
                 flex-direction: column;
                 gap: 1rem;
             }
             
-            .nav-links {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
+            .hero {
+                padding: 6rem 1rem;
             }
             
             .hero h1 {
                 font-size: 2.2rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
             h2 {
                 font-size: 2rem;
-            }
-            
-            .card {
-                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Научный хедер -->
+    <!-- Шапка -->
     <header>
-        <div class="research-header">
-            <a href="#" class="logo">
-                <i class="fas fa-flask"></i>
-                <span>EnduranceResearch</span>
-            </a>
+        <nav>
+            <a href="#" class="logo">EnduranceLab</a>
             <div class="nav-links">
-                <a href="#relevance">Актуальность</a>
-                <a href="#tests">Методики</a>
-                <a href="#gto">Нормативы</a>
-                <a href="#programs">Программы</a>
-                <a href="#calculators">Калькуляторы</a>
+                <a href="#tests">Тесты</a>
+                <a href="#methods">Методики</a>
+                <a href="#about">О проекте</a>
             </div>
-        </div>
+        </nav>
     </header>
     
-    <!-- Герой секция с актуальностью -->
-    <section class="hero" id="relevance">
-        <div class="hero-content">
-            <h1>Научное исследование методов оценки физической выносливости</h1>
-            <p>Современные исследования доказывают: развитие выносливости снижает риск сердечно-сосудистых заболеваний на 45%, увеличивает продолжительность жизни на 3-7 лет и улучшает когнитивные функции. Наша работа объединяет последние научные данные с практическими методиками тестирования.</p>
-            <div>
-                <a href="#tests" class="btn">Методы исследования</a>
-                <a href="#calculators" class="btn btn-outline">Калькуляторы</a>
-            </div>
+    <!-- Герой секция -->
+    <section class="hero">
+        <h1>Научный подход к тестированию выносливости</h1>
+        <p>Точные измерения вашей физической формы с помощью профессиональных методик</p>
+        <div>
+            <a href="#tests" class="btn">Начать тестирование</a>
+            <a href="#methods" class="btn" style="background: var(--primary);">Методы тренировок</a>
         </div>
     </section>
     
     <!-- Основной контент -->
     <main class="container">
-        <!-- Методики тестирования -->
+        <!-- Тесты -->
         <section id="tests">
-            <h2>Методики исследования выносливости</h2>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-heartbeat"></i>
-                    <h3>Проба Руфье</h3>
+            <h2>Профессиональные тесты</h2>
+            <div class="tests-grid">
+                <!-- Тест ГТО -->
+                <div class="test-card">
+                    <img src="images/fgtyyy.jpg" alt="Тест ГТО" class="test-img">
+                    <div class="test-content">
+                        <h3>Комплекс ГТО</h3>
+                        <p>Государственная система тестирования физической подготовки населения всех возрастов.</p>
+                        <div class="test-meta">
+                            <p><strong>Что измеряет:</strong> общий уровень физической подготовки</p>
+                            <p><strong>Нормативы:</strong> по возрастным группам</p>
+                        </div>
+                        <a href="#gto-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
+                    </div>
                 </div>
-                <p>Кардиотест для оценки адаптации сердечно-сосудистой системы к физической нагрузке. Проводится в 3 этапа:</p>
-                <ol style="margin: 1.5rem 0; padding-left: 2rem;">
-                    <li>Измерение пульса в покое (P1)</li>
-                    <li>30 приседаний за 45 секунд</li>
-                    <li>Измерение пульса сразу после нагрузки (P2) и через 1 минуту отдыха (P3)</li>
-                </ol>
-                <p><strong>Формула:</strong> ИР = (4×(P1+P2+P3)-200)/10</p>
-                <div class="calculator" style="margin-top: 2rem;">
-                    <h4 style="margin-bottom: 1rem;">Калькулятор индекса Руфье</h4>
-                    <div class="form-group">
-                        <label for="p1">Пульс в покое (P1):</label>
-                        <input type="number" id="p1" placeholder="Ударов в минуту">
+                
+                <!-- Тест Руфье -->
+                <div class="test-card">
+                    <img src="images/faeyf.jpg" alt="Тест Руфье" class="test-img">
+                    <div class="test-content">
+                        <h3>Проба Руфье</h3>
+                        <p>Кардиотест для оценки работоспособности сердца при физической нагрузке.</p>
+                        <div class="test-meta">
+                            <p><strong>Формула:</strong> ИР = (4×(P1+P2+P3)-200)/10</p>
+                            <p><strong>Оценка:</strong> 0-2.9 (отлично), 3-5.9 (хорошо)</p>
+                        </div>
+                        <a href="#rufier-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                     </div>
-                    <div class="form-group">
-                        <label for="p2">Пульс после нагрузки (P2):</label>
-                        <input type="number" id="p2" placeholder="Ударов в минуту">
+                </div>
+                
+                <!-- СИ-тест -->
+                <div class="test-card">
+                    <img src="images/hffar.jpg" alt="СИ-тест" class="test-img">
+                    <div class="test-content">
+                        <h3>СИ-тест</h3>
+                        <p>Скоростно-выносливостной тест для определения анаэробного порога.</p>
+                        <div class="test-meta">
+                            <p><strong>Методика:</strong> ступенчатое увеличение нагрузки</p>
+                            <p><strong>Показатель:</strong> максимальная поддерживаемая скорость</p>
+                        </div>
+                        <a href="#si-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                     </div>
-                    <div class="form-group">
-                        <label for="p3">Пульс после отдыха (P3):</label>
-                        <input type="number" id="p3" placeholder="Ударов в минуту">
-                    </div>
-                    <button onclick="calculateRufier()">Рассчитать индекс</button>
-                    <div id="rufier-result" class="result"></div>
                 </div>
             </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-running"></i>
-                    <h3>СИ-тест (Скоростно-выносливостной)</h3>
+        </section>
+        
+        <!-- Методики тренировок -->
+        <section id="methods">
+            <h2>Методики развития выносливости</h2>
+            <div class="tests-grid">
+                <div class="test-card">
+                    <div class="test-content">
+                        <h3><i class="fas fa-running"></i> Пирамидальная периодизация</h3>
+                        <p>Постепенное увеличение объема тренировок с последующим повышением интенсивности.</p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>4-недельные циклы</li>
+                            <li>Постепенное увеличение нагрузки</li>
+                            <li>Контроль по ЧСС</li>
+                        </ul>
+                    </div>
                 </div>
-                <p>Определяет анаэробный порог - точку, когда организм переключается с аэробного на анаэробный режим энергообеспечения.</p>
-                <p><strong>Методика проведения:</strong></p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Разминка 10-15 минут</li>
-                    <li>Бег/езда с постепенным увеличением скорости каждые 1-2 минуты</li>
-                    <li>Фиксация максимальной скорости, при которой возможно ровное дыхание</li>
+                
+                <div class="test-card">
+                    <div class="test-content">
+                        <h3><i class="fas fa-fire-alt"></i> Поляризованная модель</h3>
+                        <p>80% тренировок в низкой зоне интенсивности, 20% - в высокой.</p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>Оптимально для профессионалов</li>
+                            <li>Эффективное развитие VO2max</li>
+                            <li>Снижение риска перетренированности</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="test-card">
+                    <div class="test-content">
+                        <h3><i class="fas fa-bolt"></i> Интервальные тренировки</h3>
+                        <p>Чередование периодов высокой интенсивности и восстановления.</p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>Метод Табата (20/10 сек)</li>
+                            <li>Фартлек (свободный темп)</li>
+                            <li>Повторные интервалы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- О проекте -->
+        <section id="about">
+            <h2>О проекте EnduranceLab</h2>
+            <div class="test-card" style="padding: 2rem;">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Наша миссия</h3>
+                <p style="margin-bottom: 1.5rem;">Предоставить каждому человеку научно обоснованные инструменты для оценки и развития физической выносливости, адаптированные под индивидуальные возможности.</p>
+                
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Почему это важно</h3>
+                <p>Развитая выносливость - ключевой фактор здоровья и долголетия. Регулярные тренировки:</p>
+                <ul style="margin-left: 1.5rem; margin: 1rem 0;">
+                    <li>Укрепляют сердечно-сосудистую систему</li>
+                    <li>Повышают устойчивость к стрессу</li>
+                    <li>Улучшают когнитивные функции</li>
+                    <li>Увеличивают продолжительность жизни</li>
                 </ul>
-                <p><strong>Нормативы:</strong> 12-14 км/ч (начальный уровень), 16-18 км/ч (средний), 20+ км/ч (продвинутый)</p>
-            </div>
-        </section>
-        
-        <!-- Нормативы ГТО -->
-        <section id="gto">
-            <h2>Нормативы ГТО (возраст 10-29 лет)</h2>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-award"></i>
-                    <h3>Бег на выносливость</h3>
-                </div>
-                <p>Тестирование аэробной выносливости (дистанции 1-5 км в зависимости от возраста)</p>
                 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Возраст</th>
-                            <th>Золотой значок</th>
-                            <th>Серебряный значок</th>
-                            <th>Бронзовый значок</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>10-11 лет (1 км)</td>
-                            <td>5:20</td>
-                            <td>6:00</td>
-                            <td>6:30</td>
-                        </tr>
-                        <tr>
-                            <td>12-13 лет (2 км)</td>
-                            <td>10:20</td>
-                            <td>11:15</td>
-                            <td>12:10</td>
-                        </tr>
-                        <tr>
-                            <td>14-15 лет (3 км)</td>
-                            <td>14:30</td>
-                            <td>15:40</td>
-                            <td>16:30</td>
-                        </tr>
-                        <tr>
-                            <td>16-17 лет (3 км)</td>
-                            <td>13:20</td>
-                            <td>14:30</td>
-                            <td>15:30</td>
-                        </tr>
-                        <tr>
-                            <td>18-29 лет (3 км)</td>
-                            <td>12:30</td>
-                            <td>13:30</td>
-                            <td>14:30</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-swimmer"></i>
-                    <h3>Плавание 50 м (время в секундах)</h3>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Возраст</th>
-                            <th>Золото</th>
-                            <th>Серебро</th>
-                            <th>Бронза</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>10-11 лет</td>
-                            <td>50</td>
-                            <td>55</td>
-                            <td>1:00</td>
-                        </tr>
-                        <tr>
-                            <td>12-13 лет</td>
-                            <td>45</td>
-                            <td>50</td>
-                            <td>55</td>
-                        </tr>
-                        <tr>
-                            <td>14-15 лет</td>
-                            <td>40</td>
-                            <td>45</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>16-17 лет</td>
-                            <td>38</td>
-                            <td>43</td>
-                            <td>48</td>
-                        </tr>
-                        <tr>
-                            <td>18-29 лет</td>
-                            <td>35</td>
-                            <td>40</td>
-                            <td>45</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        
-        <!-- Программы тренировок -->
-        <section id="programs">
-            <h2>Программы развития выносливости</h2>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>Для студентов (начальный уровень, 8 недель)</h3>
-                </div>
-                <p><strong>Цель:</strong> Развитие общей выносливости с учетом учебной нагрузки</p>
-                
-                <div class="program">
-                    <h4><i class="fas fa-calendar-week"></i> Недельный план:</h4>
-                    <ul>
-                        <li><strong>Пн:</strong> Бег 20-30 мин (60-70% ЧСС макс) + силовая 15 мин</li>
-                        <li><strong>Ср:</strong> Интервалы 8×200 м (темповый бег с отдыхом 1:1)</li>
-                        <li><strong>Пт:</strong> Кросс 40-50 мин (ровный темп)</li>
-                        <li><strong>Сб:</strong> Плавание/велосипед 45-60 мин (аэробная зона)</li>
+                <div style="background: #f0f0f0; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-flask"></i> Научная база</h3>
+                    <p>Все представленные методики основаны на последних исследованиях в области:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Спортивной физиологии</li>
+                        <li>Кардиологии</li>
+                        <li>Биомеханики</li>
                     </ul>
-                </div>
-                
-                <div class="program">
-                    <h4><i class="fas fa-chart-line"></i> Прогрессия:</h4>
-                    <ul>
-                        <li>Недели 1-2: Адаптация (объем 3-4 часа)</li>
-                        <li>Недели 3-5: Базовый этап (4-5 часов, добавление интервалов)</li>
-                        <li>Недели 6-7: Интенсивный этап (включение темповых сессий)</li>
-                        <li>Неделя 8: Восстановление + тестирование</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-user-plus"></i>
-                    <h3>Для начинающих (12 недель)</h3>
-                </div>
-                <p><strong>Цель:</strong> Постепенное развитие аэробной базы</p>
-                
-                <div class="program">
-                    <h4><i class="fas fa-running"></i> Этапы подготовки:</h4>
-                    <ul>
-                        <li><strong>Фаза 1 (нед. 1-4):</strong> Ходьба/бег 3:1 (3 мин ходьбы, 1 мин бега), 3 раза в неделю</li>
-                        <li><strong>Фаза 2 (нед. 5-8):</strong> Бег/ходьба 1:1, добавление силовых упражнений 2 раза в неделю</li>
-                        <li><strong>Фаза 3 (нед. 9-12):</strong> Непрерывный бег 20-30 мин, 1 интервальная тренировка в неделю</li>
-                    </ul>
-                </div>
-                
-                <div class="program">
-                    <h4><i class="fas fa-heart"></i> Рекомендации:</h4>
-                    <ul>
-                        <li>Контроль пульса (не выше 70% от максимума первые 6 недель)</li>
-                        <li>2 дня отдыха между тренировками на начальном этапе</li>
-                        <li>Обязательная разминка 10-15 мин и заминка 5-10 мин</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Калькуляторы -->
-        <section id="calculators">
-            <h2>Научные калькуляторы</h2>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-heart"></i>
-                    <h3>Калькулятор пульсовых зон</h3>
-                </div>
-                <p>Определение индивидуальных тренировочных зон по формуле Карвонена</p>
-                
-                <div class="calculator">
-                    <div class="form-group">
-                        <label for="age">Возраст:</label>
-                        <input type="number" id="age" placeholder="Лет">
-                    </div>
-                    <div class="form-group">
-                        <label for="rest-hr">Пульс в покое (уд/мин):</label>
-                        <input type="number" id="rest-hr" placeholder="Измерьте утром">
-                    </div>
-                    <div class="form-group">
-                        <label for="max-hr">Максимальный пульс (если известен):</label>
-                        <input type="number" id="max-hr" placeholder="Необязательно">
-                    </div>
-                    <button onclick="calculateZones()">Рассчитать зоны</button>
-                    <div id="zones-result" class="result"></div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    <i class="fas fa-burn"></i>
-                    <h3>Калькулятор расхода калорий</h3>
-                </div>
-                <p>Оценка энергозатрат при различных видах активности</p>
-                
-                <div class="calculator">
-                    <div class="form-group">
-                        <label for="activity">Вид активности:</label>
-                        <select id="activity">
-                            <option value="running">Бег (8 км/ч)</option>
-                            <option value="running_fast">Бег (12 км/ч)</option>
-                            <option value="cycling">Велосипед (16-19 км/ч)</option>
-                            <option value="swimming">Плавание (умеренное)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="weight">Вес (кг):</label>
-                        <input type="number" id="weight" placeholder="Ваш вес">
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Продолжительность (мин):</label>
-                        <input type="number" id="duration" placeholder="Длительность">
-                    </div>
-                    <button onclick="calculateCalories()">Рассчитать</button>
-                    <div id="calories-result" class="result"></div>
                 </div>
             </div>
         </section>
@@ -747,169 +393,32 @@
     <!-- Футер -->
     <footer>
         <div class="footer-content">
-            <div class="footer-column">
-                <h3>EnduranceResearch</h3>
-                <p>Научный подход к развитию физической выносливости</p>
-                <p>Основано на последних исследованиях в области спортивной физиологии</p>
+            <div>
+                <h3>EnduranceLab</h3>
+                <p>Научный подход к развитию выносливости</p>
             </div>
             
-            <div class="footer-column">
-                <h3>Ресурсы</h3>
-                <ul>
-                    <li><a href="#">Методические материалы</a></li>
-                    <li><a href="#">Научные публикации</a></li>
-                    <li><a href="#">База нормативов</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
+            <div>
                 <h3>Контакты</h3>
-                <ul>
-                    <li><a href="mailto:research@endurance-lab.ru">research@endurance-lab.ru</a></li>
-                    <li><a href="#">Научный руководитель</a></li>
-                    <li><a href="#">Для сотрудничества</a></li>
-                </ul>
+                <p>email: info@endurancelab.ru</p>
+            </div>
+            
+            <div>
+                <h3>Ресурсы</h3>
+                <p>Блог о тренировках</p>
+                <p>Исследования</p>
             </div>
         </div>
         
         <div class="social-links">
-            <a href="#"><i class="fab fa-researchgate"></i></a>
-            <a href="#"><i class="fab fa-google-scholar"></i></a>
-            <a href="#"><i class="fab fa-orcid"></i></a>
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
         
         <div class="copyright">
-            <p>© 2023 EnduranceResearch. Все права защищены.</p>
-            <p>Научно-исследовательский проект по физиологии выносливости</p>
+            <p>© 2023 EnduranceLab. Все права защищены.</p>
         </div>
     </footer>
-    
-    <script>
-        // Калькулятор индекса Руфье
-        function calculateRufier() {
-            const p1 = parseInt(document.getElementById('p1').value);
-            const p2 = parseInt(document.getElementById('p2').value);
-            const p3 = parseInt(document.getElementById('p3').value);
-            
-            if (isNaN(p1) || isNaN(p2) || isNaN(p3)) {
-                alert("Пожалуйста, заполните все поля");
-                return;
-            }
-            
-            const index = (4 * (p1 + p2 + p3) - 200) / 10;
-            let assessment = "";
-            
-            if (index <= 2.9) assessment = "Отличный результат (высокий уровень тренированности)";
-            else if (index <= 5.9) assessment = "Хороший результат (выше среднего)";
-            else if (index <= 10.9) assessment = "Удовлетворительный результат (средний уровень)";
-            else assessment = "Низкий уровень тренированности (рекомендуется консультация врача)";
-            
-            document.getElementById('rufier-result').innerHTML = `
-                <h4>Результат:</h4>
-                <p>Индекс Руфье: <strong>${index.toFixed(1)}</strong></p>
-                <p>Оценка: <strong>${assessment}</strong></p>
-                <p>Рекомендации: ${getRufierRecommendations(index)}</p>
-            `;
-            document.getElementById('rufier-result').style.display = 'block';
-        }
-        
-        function getRufierRecommendations(index) {
-            if (index <= 2.9) return "Продолжайте текущую программу тренировок, можно добавить интервальные нагрузки";
-            else if (index <= 5.9) return "3-4 аэробные тренировки в неделю по 30-45 минут";
-            else if (index <= 10.9) return "Начните с 2-3 тренировок в неделю по 20-30 минут в комфортном темпе";
-            else return "Рекомендуется начать с регулярной ходьбы по 30 минут 3-4 раза в неделю, перед началом проконсультируйтесь с врачом";
-        }
-        
-        // Калькулятор пульсовых зон
-        function calculateZones() {
-            const age = parseInt(document.getElementById('age').value);
-            const restHR = parseInt(document.getElementById('rest-hr').value);
-            let maxHR = document.getElementById('max-hr').value;
-            
-            if (isNaN(age) || isNaN(restHR)) {
-                alert("Пожалуйста, укажите возраст и пульс в покое");
-                return;
-            }
-            
-            if (!maxHR) {
-                maxHR = 220 - age;
-            } else {
-                maxHR = parseInt(maxHR);
-            }
-            
-            const hrReserve = maxHR - restHR;
-            
-            const zones = {
-                'Восстановление': [restHR + 0.5 * hrReserve, restHR + 0.6 * hrReserve],
-                'Аэробная': [restHR + 0.6 * hrReserve, restHR + 0.7 * hrReserve],
-                'Пороговая': [restHR + 0.7 * hrReserve, restHR + 0.8 * hrReserve],
-                'Анаэробная': [restHR + 0.8 * hrReserve, restHR + 0.9 * hrReserve],
-                'Максимальная': [restHR + 0.9 * hrReserve, maxHR]
-            };
-            
-            let resultHTML = '<h4>Ваши пульсовые зоны:</h4><table><tr><th>Зона</th><th>Диапазон (уд/мин)</th><th>Тип нагрузки</th></tr>';
-            
-            for (const [zone, range] of Object.entries(zones)) {
-                let description = "";
-                if (zone === 'Восстановление') description = "Легкие восстановительные тренировки";
-                else if (zone === 'Аэробная') description = "Развитие базовой выносливости";
-                else if (zone === 'Пороговая') description = "Улучшение аэробной мощности";
-                else if (zone === 'Анаэробная') description = "Развитие скоростной выносливости";
-                else description = "Максимальные интервальные нагрузки";
-                
-                resultHTML += `
-                    <tr>
-                        <td>${zone}</td>
-                        <td>${Math.round(range[0])}-${Math.round(range[1])}</td>
-                        <td>${description}</td>
-                    </tr>
-                `;
-            }
-            
-            resultHTML += '</table>';
-            resultHTML += '<p><strong>Максимальный пульс:</strong> ' + maxHR + ' уд/мин</p>';
-            resultHTML += '<p><strong>Пульс в покое:</strong> ' + restHR + ' уд/мин</p>';
-            
-            document.getElementById('zones-result').innerHTML = resultHTML;
-            document.getElementById('zones-result').style.display = 'block';
-        }
-        
-        // Калькулятор расхода калорий
-        function calculateCalories() {
-            const activity = document.getElementById('activity').value;
-            const weight = parseFloat(document.getElementById('weight').value);
-            const duration = parseFloat(document.getElementById('duration').value);
-            
-            if (isNaN(weight) || isNaN(duration)) {
-                alert("Пожалуйста, укажите вес и продолжительность");
-                return;
-            }
-            
-            const metValues = {
-                'running': 8,
-                'running_fast': 12.5,
-                'cycling': 8,
-                'swimming': 6
-            };
-            
-            const activityNames = {
-                'running': "Бег (8 км/ч)",
-                'running_fast': "Бег (12 км/ч)",
-                'cycling': "Велосипед (16-19 км/ч)",
-                'swimming': "Плавание (умеренное)"
-            };
-            
-            const calories = (metValues[activity] * weight * duration / 60).toFixed(1);
-            
-            document.getElementById('calories-result').innerHTML = `
-                <h4>Результат:</h4>
-                <p>При ${activityNames[activity]} в течение ${duration} минут:</p>
-                <p><strong>Сожжено калорий: ${calories} ккал</strong></p>
-                <p>Расчет по формуле: MET × вес (кг) × время (часы)</p>
-            `;
-            document.getElementById('calories-result').style.display = 'block';
-        }
-    </script>
 </body>
 </html>
