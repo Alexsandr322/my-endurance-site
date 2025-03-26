@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EndurancePro | Научные методы развития выносливости</title>
-    <meta name="description" content="Программы развития выносливости на основе тестов ГТО, Руфье и СИ-теста. Калькуляторы и персональные рекомендации.">
+    <title>EnduranceLab | Тесты выносливости</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2c3e50;
             --secondary: #e74c3c;
-            --accent: #3498db;
             --light: #ecf0f1;
-            --dark: #2c3e50;
+            --dark: #1a252f;
         }
         
         * {
@@ -24,7 +22,7 @@
         
         body {
             line-height: 1.6;
-            color: var(--dark);
+            color: #333;
             background-color: #f9f9f9;
         }
         
@@ -67,19 +65,24 @@
         }
         
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--secondary);
         }
         
         /* Герой секция */
         .hero {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('images/hffar.jpg') center/cover no-repeat;
             color: white;
-            padding: 5rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
         
@@ -98,46 +101,49 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            margin: 0.5rem;
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         /* Основной контент */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
         
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--primary);
+            text-align: center;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 1rem;
         }
         
         h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
             background: var(--secondary);
         }
         
         /* Тесты */
         .tests-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
         
@@ -154,9 +160,9 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
-        .test-card img {
+        .test-card .test-img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
         
@@ -167,86 +173,16 @@
         .test-content h3 {
             margin-bottom: 1rem;
             color: var(--primary);
+            font-size: 1.5rem;
         }
         
-        /* Калькуляторы */
-        .calculator {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        button:hover {
-            background: #2980b9;
-        }
-        
-        #result {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        /* Программы тренировок */
-        .programs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .program {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .program h3 {
-            color: var(--secondary);
+        .test-content p {
             margin-bottom: 1rem;
         }
         
-        .program ul {
-            list-style-position: inside;
-            margin-bottom: 1rem;
-        }
-        
-        .program li {
-            margin-bottom: 0.5rem;
+        .test-meta {
+            color: #666;
+            font-size: 0.9rem;
         }
         
         /* Футер */
@@ -266,43 +202,25 @@
             text-align: left;
         }
         
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-column a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-column a:hover {
-            color: var(--accent);
-        }
-        
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
         }
         
         .social-links a {
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
         }
         
         .copyright {
-            margin-top: 2rem;
+            margin-top: 3rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
@@ -314,18 +232,16 @@
                 gap: 1rem;
             }
             
-            .nav-links {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
+            .hero {
+                padding: 6rem 1rem;
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
+            h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -334,22 +250,22 @@
     <!-- Шапка -->
     <header>
         <nav>
-            <a href="#" class="logo">EndurancePro</a>
+            <a href="#" class="logo">EnduranceLab</a>
             <div class="nav-links">
                 <a href="#tests">Тесты</a>
-                <a href="#calculator">Калькулятор</a>
-                <a href="#programs">Программы</a>
                 <a href="#methods">Методики</a>
+                <a href="#about">О проекте</a>
             </div>
         </nav>
     </header>
     
     <!-- Герой секция -->
     <section class="hero">
-        <div class="container">
-            <h1>Научный подход к развитию выносливости</h1>
-            <p>Используйте проверенные методики подготовки: тесты ГТО, Руфье и СИ-тест для точной оценки вашей формы и персонализированные программы тренировок</p>
+        <h1>Научный подход к тестированию выносливости</h1>
+        <p>Точные измерения вашей физической формы с помощью профессиональных методик</p>
+        <div>
             <a href="#tests" class="btn">Начать тестирование</a>
+            <a href="#methods" class="btn" style="background: var(--primary);">Методы тренировок</a>
         </div>
     </section>
     
@@ -357,192 +273,119 @@
     <main class="container">
         <!-- Тесты -->
         <section id="tests">
-            <h2>Функциональные тесты</h2>
+            <h2>Профессиональные тесты</h2>
             <div class="tests-grid">
+                <!-- Тест ГТО -->
                 <div class="test-card">
-                    <img src="https://via.placeholder.com/600x400?text=ГТО" alt="Тест ГТО">
+                    <img src="images/fgtyyy.jpg" alt="Тест ГТО" class="test-img">
                     <div class="test-content">
                         <h3>Комплекс ГТО</h3>
-                        <p>Официальная система тестирования физической подготовки. Включает бег на выносливость, плавание, лыжные гонки и другие дисциплины.</p>
-                        <p><strong>Нормы:</strong> Возрастные нормативы от 6 до 70+ лет</p>
-                        <p><strong>Применение:</strong> Оценка общего уровня физической подготовки</p>
+                        <p>Государственная система тестирования физической подготовки населения всех возрастов.</p>
+                        <div class="test-meta">
+                            <p><strong>Что измеряет:</strong> общий уровень физической подготовки</p>
+                            <p><strong>Нормативы:</strong> по возрастным группам</p>
+                        </div>
+                        <a href="#gto-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                     </div>
                 </div>
                 
+                <!-- Тест Руфье -->
                 <div class="test-card">
-                    <img src="https://via.placeholder.com/600x400?text=Руфье" alt="Тест Руфье">
+                    <img src="images/faeyf.jpg" alt="Тест Руфье" class="test-img">
                     <div class="test-content">
                         <h3>Проба Руфье</h3>
-                        <p>Кардиотест для оценки работоспособности сердца при физической нагрузке. Измеряет адаптацию сердечно-сосудистой системы.</p>
-                        <p><strong>Формула:</strong> Индекс = (4×(P1+P2+P3)-200)/10</p>
-                        <p><strong>Оценка:</strong> Отличный (0-2.9), Хороший (3-5.9), Удовл. (6-10.9), Слабый (>11)</p>
+                        <p>Кардиотест для оценки работоспособности сердца при физической нагрузке.</p>
+                        <div class="test-meta">
+                            <p><strong>Формула:</strong> ИР = (4×(P1+P2+P3)-200)/10</p>
+                            <p><strong>Оценка:</strong> 0-2.9 (отлично), 3-5.9 (хорошо)</p>
+                        </div>
+                        <a href="#rufier-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                     </div>
                 </div>
                 
+                <!-- СИ-тест -->
                 <div class="test-card">
-                    <img src="https://via.placeholder.com/600x400?text=СИ-тест" alt="СИ-тест">
+                    <img src="images/hffar.jpg" alt="СИ-тест" class="test-img">
                     <div class="test-content">
-                        <h3>СИ-тест (Скоростно-выносливостной)</h3>
-                        <p>Определяет способность поддерживать высокую скорость в течение длительного времени. Используется в циклических видах спорта.</p>
-                        <p><strong>Методика:</strong> Бег/езда с постепенным увеличением скорости до отказа</p>
-                        <p><strong>Показатель:</strong> Максимальная поддерживаемая скорость (км/ч)</p>
+                        <h3>СИ-тест</h3>
+                        <p>Скоростно-выносливостной тест для определения анаэробного порога.</p>
+                        <div class="test-meta">
+                            <p><strong>Методика:</strong> ступенчатое увеличение нагрузки</p>
+                            <p><strong>Показатель:</strong> максимальная поддерживаемая скорость</p>
+                        </div>
+                        <a href="#si-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                     </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Калькулятор -->
-        <section id="calculator">
-            <h2>Калькулятор пульсовых зон</h2>
-            <div class="calculator">
-                <div class="form-group">
-                    <label for="age">Возраст:</label>
-                    <input type="number" id="age" min="10" max="100" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="rest-hr">Пульс в покое (уд/мин):</label>
-                    <input type="number" id="rest-hr" min="40" max="100" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="max-hr">Максимальный пульс (если известен):</label>
-                    <input type="number" id="max-hr" min="100" max="220">
-                    <small>Оставьте пустым для расчета по формуле (220 - возраст)</small>
-                </div>
-                
-                <button onclick="calculateZones()">Рассчитать зоны</button>
-                
-                <div id="result"></div>
-            </div>
-            
-            <script>
-                function calculateZones() {
-                    const age = parseInt(document.getElementById('age').value);
-                    const restHR = parseInt(document.getElementById('rest-hr').value);
-                    let maxHR = document.getElementById('max-hr').value;
-                    
-                    if (!maxHR) {
-                        maxHR = 220 - age;
-                    } else {
-                        maxHR = parseInt(maxHR);
-                    }
-                    
-                    // Формула Карвонена
-                    const hrReserve = maxHR - restHR;
-                    
-                    const zones = {
-                        'Восстановление': [restHR + 0.5 * hrReserve, restHR + 0.6 * hrReserve],
-                        'Аэробная': [restHR + 0.6 * hrReserve, restHR + 0.7 * hrReserve],
-                        'Пороговая': [restHR + 0.7 * hrReserve, restHR + 0.8 * hrReserve],
-                        'Анаэробная': [restHR + 0.8 * hrReserve, restHR + 0.9 * hrReserve],
-                        'Максимальная': [restHR + 0.9 * hrReserve, maxHR]
-                    };
-                    
-                    let resultHTML = '<h3>Ваши пульсовые зоны:</h3><ul>';
-                    
-                    for (const [zone, range] of Object.entries(zones)) {
-                        resultHTML += `<li><strong>${zone}:</strong> ${Math.round(range[0])}-${Math.round(range[1])} уд/мин</li>`;
-                    }
-                    
-                    resultHTML += '</ul><p>Используйте эти значения для планирования тренировок:</p>';
-                    resultHTML += '<p>Восстановление - легкие тренировки после нагрузок<br>';
-                    resultHTML += 'Аэробная - развитие базовой выносливости<br>';
-                    resultHTML += 'Пороговая - улучшение аэробной мощности<br>';
-                    resultHTML += 'Анаэробная - развитие скоростной выносливости<br>';
-                    resultHTML += 'Максимальная - интервальные тренировки</p>';
-                    
-                    document.getElementById('result').innerHTML = resultHTML;
-                    document.getElementById('result').style.display = 'block';
-                }
-            </script>
-        </section>
-        
-        <!-- Программы тренировок -->
-        <section id="programs">
-            <h2>Программы развития выносливости</h2>
-            <div class="programs">
-                <div class="program">
-                    <h3>Начальный уровень (4 недели)</h3>
-                    <p>Для тех, кто только начинает тренировки или возвращается после перерыва</p>
-                    <ul>
-                        <li>3 тренировки в неделю</li>
-                        <li>Сочетание ходьбы и бега</li>
-                        <li>Продолжительность: 20-40 минут</li>
-                        <li>Пульсовая зона: 60-70% от максимума</li>
-                    </ul>
-                    <p><strong>Пример недели:</strong><br>
-                    Пн: 20 мин ходьбы/бега (1:1)<br>
-                    Ср: 30 мин ходьбы<br>
-                    Пт: 25 мин ходьбы/бега (1:1)</p>
-                </div>
-                
-                <div class="program">
-                    <h3>Средний уровень (8 недель)</h3>
-                    <p>Для регулярно тренирующихся с базовой выносливостью</p>
-                    <ul>
-                        <li>4-5 тренировок в неделю</li>
-                        <li>Бег/велосипед/плавание</li>
-                        <li>Интервальные тренировки 1 раз в неделю</li>
-                        <li>Пульсовые зоны: 60-90%</li>
-                    </ul>
-                    <p><strong>Пример недели:</strong><br>
-                    Пн: 45 мин аэробной работы<br>
-                    Вт: Интервалы 8×400 м<br>
-                    Чт: 60 мин темпового бега<br>
-                    Сб: Длительная 90 мин</p>
-                </div>
-                
-                <div class="program">
-                    <h3>Продвинутый уровень (12 недель)</h3>
-                    <p>Для подготовки к соревнованиям (10км, полумарафон)</p>
-                    <ul>
-                        <li>5-6 тренировок в неделю</li>
-                        <li>Специализированные беговые/велонагрузки</li>
-                        <li>Комплексные интервальные сессии</li>
-                        <li>Контроль по СИ-тесту</li>
-                    </ul>
-                    <p><strong>Пример недели:</strong><br>
-                    Пн: Восстановительная 40 мин<br>
-                    Вт: Темповые интервалы 5×1000 м<br>
-                    Ср: Силовая + кросс 60 мин<br>
-                    Пт: Скоростная работа 12×200 м<br>
-                    Вс: Длительная 120+ мин</p>
                 </div>
             </div>
         </section>
         
         <!-- Методики тренировок -->
         <section id="methods">
-            <h2>Современные методики тренировок</h2>
-            <div class="program">
-                <h3>Пирамидальная периодизация</h3>
-                <p>Постепенное увеличение объема с последующим повышением интенсивности. Научно доказанная эффективность для развития аэробной выносливости.</p>
+            <h2>Методики развития выносливости</h2>
+            <div class="tests-grid">
+                <div class="test-card">
+                    <div class="test-content">
+                        <h3><i class="fas fa-running"></i> Пирамидальная периодизация</h3>
+                        <p>Постепенное увеличение объема тренировок с последующим повышением интенсивности.</p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>4-недельные циклы</li>
+                            <li>Постепенное увеличение нагрузки</li>
+                            <li>Контроль по ЧСС</li>
+                        </ul>
+                    </div>
+                </div>
                 
-                <h3>Поляризованная модель</h3>
-                <p>80% тренировок в низкой зоне интенсивности, 20% - в высокой. Оптимально для профессиональных спортсменов.</p>
+                <div class="test-card">
+                    <div class="test-content">
+                        <h3><i class="fas fa-fire-alt"></i> Поляризованная модель</h3>
+                        <p>80% тренировок в низкой зоне интенсивности, 20% - в высокой.</p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>Оптимально для профессионалов</li>
+                            <li>Эффективное развитие VO2max</li>
+                            <li>Снижение риска перетренированности</li>
+                        </ul>
+                    </div>
+                </div>
                 
-                <h3>Метод Табата</h3>
-                <p>Высокоинтенсивные интервальные тренировки (20 сек работа / 10 сек отдых × 8 циклов). Эффективен для улучшения VO2max.</p>
-                
-                <h3>Фартлек</h3>
-                <p>Свободное чередование интенсивности в зависимости от самочувствия. Развивает способность переносить изменения темпа.</p>
+                <div class="test-card">
+                    <div class="test-content">
+                        <h3><i class="fas fa-bolt"></i> Интервальные тренировки</h3>
+                        <p>Чередование периодов высокой интенсивности и восстановления.</p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>Метод Табата (20/10 сек)</li>
+                            <li>Фартлек (свободный темп)</li>
+                            <li>Повторные интервалы</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <!-- Актуальность и цель -->
-        <section>
-            <h2>Актуальность и цель проекта</h2>
-            <div class="program">
-                <p>Современные исследования показывают, что регулярные тренировки на выносливость:</p>
-                <ul>
-                    <li>Снижают риск сердечно-сосудистых заболеваний на 40-50%</li>
-                    <li>Увеличивают продолжительность жизни на 3-7 лет</li>
-                    <li>Улучшают когнитивные функции и память</li>
+        <!-- О проекте -->
+        <section id="about">
+            <h2>О проекте EnduranceLab</h2>
+            <div class="test-card" style="padding: 2rem;">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Наша миссия</h3>
+                <p style="margin-bottom: 1.5rem;">Предоставить каждому человеку научно обоснованные инструменты для оценки и развития физической выносливости, адаптированные под индивидуальные возможности.</p>
+                
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Почему это важно</h3>
+                <p>Развитая выносливость - ключевой фактор здоровья и долголетия. Регулярные тренировки:</p>
+                <ul style="margin-left: 1.5rem; margin: 1rem 0;">
+                    <li>Укрепляют сердечно-сосудистую систему</li>
                     <li>Повышают устойчивость к стрессу</li>
+                    <li>Улучшают когнитивные функции</li>
+                    <li>Увеличивают продолжительность жизни</li>
                 </ul>
-                <p><strong>Цель этого ресурса</strong> - предоставить научно обоснованные, проверенные методики развития выносливости, адаптированные для людей с разным уровнем подготовки.</p>
-                <p>Все программы основаны на исследованиях в области спортивной физиологии и адаптированы для самостоятельного применения.</p>
+                
+                <div style="background: #f0f0f0; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-flask"></i> Научная база</h3>
+                    <p>Все представленные методики основаны на последних исследованиях в области:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Спортивной физиологии</li>
+                        <li>Кардиологии</li>
+                        <li>Биомеханики</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
@@ -550,40 +393,31 @@
     <!-- Футер -->
     <footer>
         <div class="footer-content">
-            <div class="footer-column">
-                <h3>О проекте</h3>
-                <ul>
-                    <li><a href="#">Наша миссия</a></li>
-                    <li><a href="#">Методология</a></li>
-                    <li><a href="#">Научная база</a></li>
-                </ul>
+            <div>
+                <h3>EnduranceLab</h3>
+                <p>Научный подход к развитию выносливости</p>
             </div>
             
-            <div class="footer-column">
-                <h3>Ресурсы</h3>
-                <ul>
-                    <li><a href="#">Блог</a></li>
-                    <li><a href="#">Калькуляторы</a></li>
-                    <li><a href="#">Исследования</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
+            <div>
                 <h3>Контакты</h3>
-                <ul>
-                    <li><a href="mailto:info@endurancepro.ru">info@endurancepro.ru</a></li>
-                    <li><a href="#">Форма обратной связи</a></li>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </ul>
+                <p>email: info@endurancelab.ru</p>
+            </div>
+            
+            <div>
+                <h3>Ресурсы</h3>
+                <p>Блог о тренировках</p>
+                <p>Исследования</p>
             </div>
         </div>
         
+        <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        
         <div class="copyright">
-            <p>© 2023 EndurancePro. Все права защищены.</p>
+            <p>© 2023 EnduranceLab. Все права защищены.</p>
         </div>
     </footer>
 </body>
