@@ -68,9 +68,9 @@
             color: var(--secondary);
         }
         
-        /* Герой секция */
+        /* Герой секция с фоновым изображением */
         .hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
                         url('images/hffar.jpg') center/cover no-repeat;
             color: white;
             padding: 8rem 2rem;
@@ -158,6 +158,26 @@
         .test-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Секция пробы Руфье с фоновым изображением */
+        #rufier-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('images/faeyf.jpg') center/cover no-repeat;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            color: white;
+        }
+        
+        /* Секция программ с фоновым изображением */
+        #programs-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('images/fgtyyy.jpg') center/cover no-repeat;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            color: white;
         }
         
         .test-card .test-img {
@@ -259,7 +279,7 @@
         </nav>
     </header>
     
-    <!-- Герой секция -->
+    <!-- Герой секция с фоновым изображением hffar.jpg -->
     <section class="hero">
         <h1>Научный подход к тестированию выносливости</h1>
         <p>Точные измерения вашей физической формы с помощью профессиональных методик</p>
@@ -289,17 +309,19 @@
                     </div>
                 </div>
                 
-                <!-- Тест Руфье -->
-                <div class="test-card">
-                    <img src="images/faeyf.jpg" alt="Тест Руфье" class="test-img">
-                    <div class="test-content">
-                        <h3>Проба Руфье</h3>
-                        <p>Кардиотест для оценки работоспособности сердца при физической нагрузке.</p>
-                        <div class="test-meta">
-                            <p><strong>Формула:</strong> ИР = (4×(P1+P2+P3)-200)/10</p>
-                            <p><strong>Оценка:</strong> 0-2.9 (отлично), 3-5.9 (хорошо)</p>
+                <!-- Секция пробы Руфье с фоновым изображением faeyf.jpg -->
+                <div id="rufier-section">
+                    <div class="test-card" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <img src="images/faeyf.jpg" alt="Тест Руфье" class="test-img">
+                        <div class="test-content">
+                            <h3>Проба Руфье</h3>
+                            <p>Кардиотест для оценки работоспособности сердца при физической нагрузке.</p>
+                            <div class="test-meta">
+                                <p><strong>Формула:</strong> ИР = (4×(P1+P2+P3)-200)/10</p>
+                                <p><strong>Оценка:</strong> 0-2.9 (отлично), 3-5.9 (хорошо)</p>
+                            </div>
+                            <a href="#rufier-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                         </div>
-                        <a href="#rufier-details" class="btn" style="background: var(--primary); padding: 0.5rem 1rem; font-size: 0.9rem;">Подробнее</a>
                     </div>
                 </div>
                 
@@ -319,47 +341,49 @@
             </div>
         </section>
         
-        <!-- Методики тренировок -->
-        <section id="methods">
-            <h2>Методики развития выносливости</h2>
-            <div class="tests-grid">
-                <div class="test-card">
-                    <div class="test-content">
-                        <h3><i class="fas fa-running"></i> Пирамидальная периодизация</h3>
-                        <p>Постепенное увеличение объема тренировок с последующим повышением интенсивности.</p>
-                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                            <li>4-недельные циклы</li>
-                            <li>Постепенное увеличение нагрузки</li>
-                            <li>Контроль по ЧСС</li>
-                        </ul>
+        <!-- Секция программ с фоновым изображением fgtyyy.jpg -->
+        <div id="programs-section">
+            <section id="methods">
+                <h2>Методики развития выносливости</h2>
+                <div class="tests-grid">
+                    <div class="test-card" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <div class="test-content">
+                            <h3><i class="fas fa-running"></i> Пирамидальная периодизация</h3>
+                            <p>Постепенное увеличение объема тренировок с последующим повышением интенсивности.</p>
+                            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                                <li>4-недельные циклы</li>
+                                <li>Постепенное увеличение нагрузки</li>
+                                <li>Контроль по ЧСС</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="test-card" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <div class="test-content">
+                            <h3><i class="fas fa-fire-alt"></i> Поляризованная модель</h3>
+                            <p>80% тренировок в низкой зоне интенсивности, 20% - в высокой.</p>
+                            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                                <li>Оптимально для профессионалов</li>
+                                <li>Эффективное развитие VO2max</li>
+                                <li>Снижение риска перетренированности</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="test-card" style="background: rgba(255,255,255,0.9); color: #333;">
+                        <div class="test-content">
+                            <h3><i class="fas fa-bolt"></i> Интервальные тренировки</h3>
+                            <p>Чередование периодов высокой интенсивности и восстановления.</p>
+                            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                                <li>Метод Табата (20/10 сек)</li>
+                                <li>Фартлек (свободный темп)</li>
+                                <li>Повторные интервалы</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="test-card">
-                    <div class="test-content">
-                        <h3><i class="fas fa-fire-alt"></i> Поляризованная модель</h3>
-                        <p>80% тренировок в низкой зоне интенсивности, 20% - в высокой.</p>
-                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                            <li>Оптимально для профессионалов</li>
-                            <li>Эффективное развитие VO2max</li>
-                            <li>Снижение риска перетренированности</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="test-card">
-                    <div class="test-content">
-                        <h3><i class="fas fa-bolt"></i> Интервальные тренировки</h3>
-                        <p>Чередование периодов высокой интенсивности и восстановления.</p>
-                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                            <li>Метод Табата (20/10 сек)</li>
-                            <li>Фартлек (свободный темп)</li>
-                            <li>Повторные интервалы</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
         
         <!-- О проекте -->
         <section id="about">
