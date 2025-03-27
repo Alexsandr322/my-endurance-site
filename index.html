@@ -114,7 +114,7 @@
         /* Герой секция */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('images/hffar.jpg') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
             color: white;
             padding: 10rem 2rem;
             text-align: center;
@@ -695,7 +695,7 @@
             <h2>Функциональные тесты</h2>
             
             <!-- Проба Руфье с фоновым изображением -->
-            <div class="bg-section" style="background-image: url('images/faeyf.jpg');">
+            <div class="bg-section" style="background-image: url('https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');">
                 <div class="card">
                     <h3><i class="fas fa-heartbeat"></i> Проба Руфье</h3>
                     <p>Методика оценки адаптации сердечно-сосудистой системы к физической нагрузке:</p>
@@ -842,9 +842,8 @@
                 </table>
             </div>
         </section>
-        
-        <!-- Программы тренировок с фоновым изображением -->
-        <div class="bg-section" style="background-image: url('images/fgtyyy.jpg');">
+                <!-- Программы тренировок с фоновым изображением -->
+        <div class="bg-section" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
             <section id="programs">
                 <h2 style="color: white;">Программы развития выносливости</h2>
                 
@@ -944,6 +943,58 @@
                 </div>
                 <button onclick="calculateCalories()">Рассчитать</button>
                 <div id="calories-result" class="result"></div>
+            </div>
+
+            <!-- Новый калькулятор темпа бега -->
+            <div class="calculator">
+                <h3><i class="fas fa-stopwatch"></i> Калькулятор темпа бега</h3>
+                <div class="form-group">
+                    <label for="distance">Дистанция:</label>
+                    <select id="distance" onchange="toggleCustomDistance()">
+                        <option value="1">1 км</option>
+                        <option value="3">3 км</option>
+                        <option value="5">5 км</option>
+                        <option value="10">10 км</option>
+                        <option value="21.1">Полумарафон (21.1 км)</option>
+                        <option value="42.2">Марафон (42.2 км)</option>
+                        <option value="custom">Другая</option>
+                    </select>
+                </div>
+                <div class="form-group" id="custom-distance-group" style="display: none;">
+                    <label for="custom-distance">Своя дистанция (км):</label>
+                    <input type="number" id="custom-distance" step="0.1" placeholder="Например: 4.2">
+                </div>
+                <div class="form-group">
+                    <label for="time-hours">Время:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="time-hours" placeholder="Часы" min="0" style="flex: 1;">
+                        <input type="number" id="time-minutes" placeholder="Минуты" min="0" max="59" style="flex: 1;">
+                        <input type="number" id="time-seconds" placeholder="Секунды" min="0" max="59" style="flex: 1;">
+                    </div>
+                </div>
+                <button onclick="calculatePace()">Рассчитать темп</button>
+                <div id="pace-result" class="result"></div>
+            </div>
+
+            <!-- Интервальный таймер -->
+            <div class="calculator">
+                <h3><i class="fas fa-stopwatch"></i> Интервальный таймер</h3>
+                <div class="form-group">
+                    <label for="work-time">Работа (секунды):</label>
+                    <input type="number" id="work-time" value="30">
+                </div>
+                <div class="form-group">
+                    <label for="rest-time">Отдых (секунды):</label>
+                    <input type="number" id="rest-time" value="15">
+                </div>
+                <div class="form-group">
+                    <label for="rounds">Количество раундов:</label>
+                    <input type="number" id="rounds" value="5">
+                </div>
+                <button onclick="startIntervalTimer()">Старт</button>
+                <button onclick="stopIntervalTimer()" style="background: var(--accent);">Стоп</button>
+                <div id="timer-display" style="font-size: 2rem; text-align: center; margin: 1rem 0;"></div>
+                <div id="timer-status" style="text-align: center;"></div>
             </div>
         </section>
     </main>
@@ -1145,6 +1196,119 @@
                 <p>Расчет по формуле: MET × вес (кг) × время (часы)</p>
             `;
             document.getElementById('calories-result').style.display = 'block';
+        }
+
+        // Калькулятор темпа бега
+        function toggleCustomDistance() {
+            const distanceSelect = document.getElementById('distance');
+            const customDistanceGroup = document.getElementById('custom-distance-group');
+            customDistanceGroup.style.display = distanceSelect.value === 'custom' ? 'block' : 'none';
+        }
+
+        function calculatePace() {
+            let distance;
+            const distanceSelect = document.getElementById('distance').value;
+            
+            if (distanceSelect === 'custom') {
+                distance = parseFloat(document.getElementById('custom-distance').value);
+                if (isNaN(distance) {
+                    alert("Укажите свою дистанцию");
+                    return;
+                }
+            } else {
+                distance = parseFloat(distanceSelect);
+            }
+
+            const hours = parseInt(document.getElementById('time-hours').value) || 0;
+            const minutes = parseInt(document.getElementById('time-minutes').value) || 0;
+            const seconds = parseInt(document.getElementById('time-seconds').value) || 0;
+
+            if (hours === 0 && minutes === 0 && seconds === 0) {
+                alert("Укажите время");
+                return;
+            }
+
+            const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+            const paceSeconds = Math.round(totalSeconds / distance);
+            const paceMinutes = Math.floor(paceSeconds / 60);
+            const paceRemainingSeconds = paceSeconds % 60;
+
+            const paceFormatted = `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')} мин/км`;
+            const speed = (distance / (totalSeconds / 3600)).toFixed(2);
+
+            document.getElementById('pace-result').innerHTML = `
+                <h4>Результат:</h4>
+                <p><strong>Темп: ${paceFormatted}</strong></p>
+                <p><strong>Скорость: ${speed} км/ч</strong></p>
+                <p>Дистанция: ${distance} км</p>
+                <p>Время: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</p>
+            `;
+            document.getElementById('pace-result').style.display = 'block';
+        }
+
+        // Интервальный таймер
+        let timerInterval;
+        let currentRound = 1;
+        let isWorkPhase = true;
+        let timeLeft;
+
+        function startIntervalTimer() {
+            const workTime = parseInt(document.getElementById('work-time').value);
+            const restTime = parseInt(document.getElementById('rest-time').value);
+            const rounds = parseInt(document.getElementById('rounds').value);
+
+            if (isNaN(workTime) || isNaN(restTime) || isNaN(rounds)) {
+                alert("Заполните все поля");
+                return;
+            }
+
+            stopIntervalTimer(); // Останавливаем предыдущий таймер, если был
+
+            currentRound = 1;
+            isWorkPhase = true;
+            timeLeft = workTime;
+
+            updateTimerDisplay();
+            document.getElementById('timer-status').textContent = `Раунд ${currentRound}/${rounds} • Работа`;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+
+                if (timeLeft <= 0) {
+                    if (isWorkPhase) {
+                        // Переход к отдыху
+                        isWorkPhase = false;
+                        timeLeft = restTime;
+                        document.getElementById('timer-status').textContent = `Раунд ${currentRound}/${rounds} • Отдых`;
+                    } else {
+                        // Переход к следующему раунду
+                        currentRound++;
+                        if (currentRound > rounds) {
+                            stopIntervalTimer();
+                            document.getElementById('timer-status').textContent = "Тренировка завершена!";
+                            return;
+                        }
+                        isWorkPhase = true;
+                        timeLeft = workTime;
+                        document.getElementById('timer-status').textContent = `Раунд ${currentRound}/${rounds} • Работа`;
+                    }
+                }
+
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function stopIntervalTimer() {
+            clearInterval(timerInterval);
+            document.getElementById('timer-display').textContent = "00:00";
+            document.getElementById('timer-status').textContent = "";
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer-display').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
     </script>
 </body>
