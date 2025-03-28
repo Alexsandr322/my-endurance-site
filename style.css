@@ -85,7 +85,26 @@ button:hover {
 .bg-section {
   background-image: url('images/faeyf.jpg?width=800&format=webp'); /* WebP для поддержки */
 }
+.input-hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
 
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s;
+}
 /* Отложенная загрузка фонов */
 .bg-section:not(:first-of-type) {
   loading: lazy;
