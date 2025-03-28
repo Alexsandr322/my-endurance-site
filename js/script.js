@@ -16,3 +16,21 @@ formInputs.forEach(input => {
     input.value = localStorage.getItem(input.id);
   }
 });
+// Анимация загрузки
+function showLoader() {
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="loader">
+      <div class="loader-spinner"></div>
+    </div>
+  `);
+}
+
+// Затемнение неактивных форм
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('focus', function() {
+    this.parentElement.style.opacity = '1';
+  });
+  input.addEventListener('blur', function() {
+    this.parentElement.style.opacity = '0.8';
+  });
+});
