@@ -370,3 +370,17 @@ button:hover {
     font-size: 16px;
   }
 }
+#floating-trophy {
+  position: fixed;
+  bottom: 80px; /* Размещаем над ракетой */
+  right: 30px;
+  font-size: 40px;
+  cursor: pointer;
+  opacity: 0.8;
+  animation: float 3s ease-in-out infinite;
+  z-index: 999;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
